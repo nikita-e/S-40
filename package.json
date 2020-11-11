@@ -1,0 +1,32 @@
+{
+  "name": "c-40",
+  "version": "1.0.0",
+  "description": "A discord bot for playing radiation alert",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nikita E.#1674",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.4.1",
+    "ffmpeg-static": "^4.2.7",
+    "opusscript": "0.0.7",
+    "ytdl-core": "^4.0.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikita-e/S-40.git"
+  },
+  "keywords": [
+    "bot",
+    "JS",
+    "Discord",
+    "alert"
+  ],
+  "bugs": {
+    "url": "https://github.com/nikita-e/S-40/issues"
+  },
+  "homepage": "https://github.com/nikita-e/S-40#readme"
+}
