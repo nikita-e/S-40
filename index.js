@@ -1,9 +1,9 @@
-//С-40, крутит сирену внимание всем
+//modules
 const ytdl = require('ytdl-core');
 const Discord = require('discord.js');
-//конфиг
+//config, IMPORTANT
 const prefix = "S40/";
-const tokens = [
+const tokens = [ //here you paste your tokens, tokens amount is bots amount (you need different discord bots)
     ""
 ];
 let bots = [];
@@ -12,11 +12,11 @@ let isInVoice = false;
 for (let i = 0; i < tokens.length; i++) {
     bots[i] = new Discord.Client();
 }
-/* ===== основная часть ===== */
+/* ===== main ===== */
 bots.forEach(bot => {
     bot.login(tokens[bots.indexOf(bot)]);
     bot.on('ready', () => {
-        console.log(`Запустился бот ${bot.user.tag}`);
+        console.log(`Bot ${bot.user.tag} has started`);
         bot.generateInvite().then(link => { //[`ADMINISTRATOR`]
             console.log(link);
         });
