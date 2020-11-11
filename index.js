@@ -1,22 +1,23 @@
-//С-40, крутит сирену внимание всем
+//modules
 const ytdl = require('ytdl-core');
 const Discord = require('discord.js');
-//конфиг
+//config, IMPORTANT
 const prefix = "S40/";
-const tokens = [
+const tokens = [ //here you paste your tokens, tokens amount equals bots amount (you need different discord bots)
     ""
 ];
 let bots = [];
 let isInVoice = false;
+let channel = null;
 
 for (let i = 0; i < tokens.length; i++) {
     bots[i] = new Discord.Client();
 }
-/* ===== основная часть ===== */
+/* ===== main ===== */
 bots.forEach(bot => {
     bot.login(tokens[bots.indexOf(bot)]);
     bot.on('ready', () => {
-        console.log(`Запустился бот ${bot.user.tag}`);
+        console.log(`Bot ${bot.user.tag} has started`);
         bot.generateInvite().then(link => { //[`ADMINISTRATOR`]
             console.log(link);
         });
@@ -24,7 +25,7 @@ bots.forEach(bot => {
     bot.on('message', async message => {
         if (message.content === prefix + "start") {
             if (message.member.voice.channel) {
-              const channel = await message.member.voice.channel.join();
+              channel = await message.member.voice.channel.join();
               const sound = channel.play(ytdl('https://youtu.be/1mag85Ok0jI', { filter: 'audioonly' }));
               isInVoice = true;
               message.reply("Started playing!");
@@ -35,7 +36,7 @@ bots.forEach(bot => {
         }
         if (message.content === prefix + "stop") {
             if (isInVoice) {
-                await message.member.voice.channel.leave();
+                await channel.leave();
                 isInVoice = false;
                 message.reply("Stopped playing!");
             } else {
