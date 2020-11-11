@@ -3,7 +3,7 @@ const ytdl = require('ytdl-core');
 const Discord = require('discord.js');
 //config, IMPORTANT
 const prefix = "S40/";
-const tokens = [ //here you paste your tokens, tokens amount is bots amount (you need different discord bots)
+const tokens = [ //here you paste your tokens, tokens amount equals bots amount (you need different discord bots)
     ""
 ];
 let bots = [];
