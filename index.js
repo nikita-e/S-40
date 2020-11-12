@@ -7,14 +7,14 @@ const tokens = [ //here you paste your tokens, tokens amount equals bots amount 
     ""
 ];
 let bots = [];
-let isInVoice = false;
-let channel = null;
 
 for (let i = 0; i < tokens.length; i++) {
     bots[i] = new Discord.Client();
 }
 /* ===== main ===== */
 bots.forEach(bot => {
+    let isInVoice = false;
+    let channel;
     bot.login(tokens[bots.indexOf(bot)]);
     bot.on('ready', () => {
         console.log(`Bot ${bot.user.tag} has started`);
@@ -35,8 +35,8 @@ bots.forEach(bot => {
             }
         }
         if (message.content === prefix + "stop") {
-            if (isInVoice) {
-                await channel.leave();
+            if (isInVoice === true) {
+                await channel.disconnect();
                 isInVoice = false;
                 message.reply("Stopped playing!");
             } else {
